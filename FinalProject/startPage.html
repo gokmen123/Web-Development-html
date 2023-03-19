@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./startPage.css">
+    <script src="./startPage.js" defer></script>
+</head>
+<body>
+     <div class="success"><!-- Adds succes meesage  -->
+        <div class="alert-firsts"><h1 class="alert-messages">Hello world</h1></div>
+       
+    </div>
+    <div class="start">
+        <div class="add-student"> <!-- Add student menu -->
+            <form>
+                <input type="text" placeholder="ClassName" id="class-name">
+                <input type="number"  placeholder="Student No (Unique)" id="no">
+                <input type="text" placeholder="Name" id="student-name">
+                <input type="text" placeholder="Surname" id="student-surname">
+                <input type="number" placeholder="Midterm" id="midterm">
+                <input type="number" placeholder="Final" id="final">
+            </form> 
+            <button onclick="addStudent()">Add Student</button>
+
+        </div>
+        <div class="alert"> <!-- Alert message -->
+            <div class="alert-first"><h1 class="alert-message">Hello world</h1></div>
+            <div class="alert-second"><button onclick="remove()">Ok</button></div>
+        </div>
+        
+        <div class="update-student"> <!-- Update student menu -->
+            <form>
+                <input type="text" placeholder="Name" id="update-student-name">
+                <input type="text" placeholder="Surname" id="update-student-surname">
+                <input type="number" placeholder="Midterm" id="update-midterm">
+                <input type="number" placeholder="Final" id="update-final">
+            </form> 
+            <button onclick="afterUpdateStudent()">Save Changes</button>
+
+        </div>
+        <div class="update-class"> <!-- update class menu -->
+            <form>
+                <input type="text" id="old-name" placeholder="Old Name">
+                <input type="text" id="new-name" placeholder="New Name">
+            </form>
+            <button onclick="afterUpdate()" >Save Changes</button>
+        </div>
+        <div class="delete-class"> <!-- delete class menu -->
+            <form>
+                <input type="text" id="delete-name" placeholder="Class Name">
+                
+            </form>
+            <button onclick="afterDelete()" >Delete Class</button>
+        </div>
+        <div class="class-table"> <!-- Class table menı -->
+                <form>
+                    <input id="get-class-name" placeholder="Enter ClassName">
+                </form>
+                <div class="checkboxs">
+                    <div>
+                        <h1>Only failed</h1>
+                        <input id="fail-student" type="checkbox">
+                    </div>
+                    <div >
+                        <h1>Only passed</h1>
+                        <input id="pass-student" type="checkbox">
+                    </div>
+                </div>
+                <button onclick="checkTable()">Bring Table</button>
+        </div>
+        <div class="search-student"> <!-- search student menu -->
+            <form>
+                <input id="get-student-name" placeholder="Enter Student Id">
+            </form>
+            
+            <button onclick="bringStudent()">Bring Student</button>
+        </div>
+        <div class="start-first">
+            <form class="add-class"> <!-- add class inputs -->
+                <input  type="text" placeholder="ClassName" id="add-className">
+                <input type="number" placeholder="Point scale" id="point-scale">
+            </form>
+            <div class="buttons"> <!-- buttons main menu -->
+                <button class="add" onclick="addClass()">Add </button>
+                <button class="delete" onclick="deleteClass()">Delete </button>
+                <button class="update" onclick="updateClass()">Update </button>
+                <button class="student-add" onclick="beforeAddStudent()">Add Student</button>
+                <button class="show-class" onclick="bringClass()"> Search Class</button>
+                <button class="show-class" onclick="searchStudent()"> Search Student</button>
+            </div>
+            
+        </div>
+    </div>
+    <div class="table-class"> <!-- class table -->
+        <h2 id="table-classname" style="margin-top: 5%;">ClassName</h2>
+        <table id="bring-class">
+            <thead>
+                <tr>
+                    <th>Student Id</th>
+                    <th>Student Name</th>
+                    <th> Student Surname</th>
+                    <th>Midterm</th>
+                    <th>Final</th>
+                    <th>Grade</th>
+                    <th>Update</th>
+                    <th>Delete</th>
+        
+                </tr>
+            </thead>
+            <tbody id="tbodyy">
+                
+            </tbody>
+            
+        </table>
+    </div>
+    <div class="student-class"> <!-- student table -->
+        <h2 id="student-bring-name" style="margin-top: 5%;">StudentName</h2>
+        <table id="bring-class">
+            <thead>
+                <tr>
+                    <th>ClassName</th>
+                    <th>Midterm</th>
+                    <th>Final</th>
+                    <th>Grade</th>
+                    
+                    
+        
+                </tr>
+            </thead>
+            <tbody id="tbody-student">
+                
+            </tbody>
+            
+        </table>
+    </div>
+</body>
+</html>

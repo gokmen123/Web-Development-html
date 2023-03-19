@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @media (max-width:700px){
+            body {
+                font-size: 2.4vw;
+            }
+            
+
+        }
+        
+        @media (max-width:470px) {
+            body {
+                font-size: 2.5vw;
+            }
+            .middle-2-second {
+                font-size: 1.22em;
+            }
+            
+        }
+        
+        .main{  /* main content of the all page */
+            width: 84%;
+            margin: auto;
+        }
+        .second-main{  /* second-main content it fixes the height and declares a border */
+            height: 94vh;
+            border: 2px solid black;
+            
+        }
+        header{ /* İt containst the first part such as world image and the money is tme sentence  space-betwee pust spaces between divs*/
+            display: flex;
+            justify-content: space-between;
+            height: 9vh;
+            border-bottom: 2px solid black;
+        }
+        footer{  /* bottom side of the page it has a border top and puts it contenst column desing */
+            height: 20vh;
+            border-top: 2px solid black;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+
+        }
+        .middle-1,.middle-2,.middle-3{ /* declares the common features between these 3 classes */
+            box-sizing: border-box;
+            border-right: 2px solid black;
+        }
+        .middle{ /* middle side of the page between header and footer puts it contents as  row desing */
+            height:60vh ;
+            display: flex;
+            flex-direction: row;
+        }
+        .middle-1{ /* the left most child old the middle class its items centered  it has flex 2 it takes 2/7 of the page */
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            flex: 2;
+           align-items: center;
+           justify-content: space-around;
+        }
+        .middle-2{ /* the middle child of the middle class  */
+            height: 100%;
+            flex: 3;
+            
+        }
+        .middle-3{ /* right most child of the middle class it has no extra border puts spaces beteen its elements as space around feature */
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            flex: 2;
+            border: none;
+            justify-content: space-around;
+            align-items: center;
+        } 
+        .middle-2-first{ /* first child of the middle-2 element contains "welcome "sentece */
+            height: 9vh;
+            width: 100%;
+            border-bottom: 2px solid black;
+            display: flex;
+        }
+        .middle1-child{ /* all common features for middle-1 child elements  */
+            border: 2px solid black;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: row;
+            height: 13%;
+            width: 55%;
+            border-radius: 20px;
+        }
+        .middle1-child img { /* all common features for middle-1 child images  */
+            width:30% ;
+            height:80%;
+            margin: auto 0;
+        }
+        
+        .footer-alt{ /*footer mains child contains boxes */
+            width: 26%;
+            height: 14vh;
+            border:2px solid black;
+            border-radius: 20px;
+            margin-top: 2.5%;
+
+        }
+        .footer-main{ /* footer's first child  */
+            display: flex;
+            height: fit-content;
+            box-sizing: border-box;
+            justify-content: space-around;
+            
+        }
+        .middle3-alt{ /* all common features for middle3 childs  */
+            display: flex;
+            flex-direction: column;
+            width: 55%;
+            border: 2px solid black;
+            height: 26% ;
+            border-radius: 20px;
+            text-align: center;
+        }
+        .middle3-alt img { /* all common features for middle3 childs images  */
+            width: 35%;
+            height: 35%;
+            margin-top: 7%;
+            margin-left: 7%;
+            margin-bottom: 2%;
+        }
+        .middle3-alt p { /* all common features for middle3 childs paragraphs */
+            font-size: 0.6em;
+        }
+        .middle3-alt-child{ /* all common features for middle3 child's childs  * margin auto used for centering elements inside this class*/
+            border: 2px solid black;
+            font-size: 0.50em;
+            height: 12%;
+            width: 80%;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            
+        }
+        .middle3-alt-child p {
+            width: fit-content;
+            
+            font-size: 0.9em;
+            margin-top: 2.5%;
+        }
+        .footer-alt p {
+            width: fit-content;
+            margin:  auto;
+            margin-top: 20%;
+            font-size: 100%;
+            
+        }
+        .footer-alt div {
+            width: fit-content;
+            margin:  auto;
+            font-size: 1em;
+            margin-top: 7%;
+        }
+        .footer-alt img {
+            width: 40px;
+            height: 40px;
+            margin-top: 7%;
+            margin-left: 10%;
+            
+            
+        }
+        .middle-2-second{ /* all common features for middle 2 divs it contains kirpto para ect sentences  */
+            display:flex ;flex-direction: column;justify-content: space-around;width: 80%;margin: auto ;margin-top: 2%;
+        }
+        .middle-2-second h1 { /* all common features for middle2 childs h1 elements  */
+            width:fit-content ;margin:auto;color: brown;font-size: 0.8em;font-style: oblique;
+        }
+        .middle-2-second p { /* all common features for middle2 childs p elements  */
+            font-weight:700 ;font-style: italic;font-size: 0.67em;
+        }
+
+    </style>
+</head>
+<body>
+    <div  >
+        <div class="main">
+           <hr style="height:2vh ;background-color: lightblue;">  <!-- hr 's features it becomes beginnig of the page ' -->
+            <div class="second-main">
+                <header >
+                    <div style="display: flex; text-align: center;flex:1;justify-content: space-around;">
+                        <img style="width:25% ;height:8vh;" src="https://thumbs.dreamstime.com/b/world-earth-world-symbol-black-white-world-earth-world-symbol-vector-illustration-graphic-design-144953979.jpg"/>
+                        <a style="margin-top: 1vh ;" href="https://dys.mu.edu.tr/login/index_auth.php"> Cheap Currency</a>
+                        <img style="width:25% ;height:8vh;" src="https://thumbs.dreamstime.com/b/world-earth-world-symbol-black-white-world-earth-world-symbol-vector-illustration-graphic-design-144953979.jpg"/>
+                        
+                    </div>
+                    <div style="display: flex;flex:2;justify-content: flex-end;">
+                        <p style="font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;margin-right: 2%;">Money is your time, time is our money.</p>
+                    </div>
+                </header>
+                <div class="middle">
+                    <div class="middle-1"> <!-- all dollar coin images stands in this class left most child of the middle element -->
+                        <div class="middle1-child">
+                            <img  src="https://www.freepngimg.com/thumb/dollar/64032-united-money-symbol-dollar-sign-states-currency.png" />
+                            <p > 1.00$ </p>
+
+                        </div>
+                        <div class="middle1-child">
+                            <img  src="https://pbs.twimg.com/media/ExBhsB6XIAE8fi1.jpg"/>
+                            <p > 1.00$ </p>
+
+                        </div>
+                        <div class="middle1-child">
+                            <img src="https://st2.depositphotos.com/3725083/5449/i/950/depositphotos_54491329-stock-photo-turkish-lira-symbol.jpg" />
+                            <p > 0.054$</p>
+
+                        </div>
+                        <div class="middle1-child">
+                            <img  src="https://w7.pngwing.com/pngs/439/904/png-transparent-coin-currency-rmb-yuan-valuta-currency-and-cryptocurrency-signs-free-icon.png" />
+                            <p > 0.14$</p>
+
+                        </div>
+                        <div class="middle1-child">
+                            <img src="https://crowdspotsimages.s3-us-west-2.amazonaws.com/bitcoin-1389244764714-Bitcoin.jpg" />
+                            <p > 20.421$</p>
+
+                        </div>
+                        <div class="middle1-child">
+                            <img  src="https://static.vecteezy.com/system/resources/previews/006/699/647/original/doge-coin-cryptocurrencydoge-logo-gold-coindecentralized-digital-money-concept-free-vector.jpg" />
+                            <p > 0.066$</p>
+
+                        </div>
+                    </div>
+                    <div class="middle-2">
+                        <div class="middle-2-first">
+                            <p style="margin:auto ;font-weight: 900;font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;">Welcome To Investing!</p>
+                            
+                        </div>
+                        <div class="middle-2-second">
+                            <div>
+                                <h1>GÜNCEL</h1>
+                                <p>- Dünya - Gerçek zamanlı döviz kurları, portföy takibi, finans haberleri, canlı piyasa fiyatları ve daha fazlasını sunar.</p>
+                            </div>
+                            <div>
+                                <h1 style="color: rgb(20, 173, 173);">BİTCOİN</h1>
+                                <p>- Bitcoin fiyat
+                                    Canlı Bitcoin fiyatları, piyasa yorumları, grafikleri ve işlem hacmi.</p>
+                            </div>
+                            <div>
+                                <h1 style="color: green;">KRİPTO PARA</h1>
+                                <p>- Kripto Para
+                                    Investing.com üzerinde bulunan tüm kripto paralarla ilgili kapsamlı bir liste.</p>  
+
+                            </div>
+                            <div>
+                                <h1 style="color: blueviolet;">CANLI BORSA</h1>
+                                <p>- Canlı Borsa sayfası üzerinden sürekli olarak güncellenen Borsa İstanbul (BIST 100, 50, 30) verilerini Canlı Takip Ekranı ile anlık olarak takip edebilirsiniz.</p>      
+                            </div>
+                            <div style="display:flex ;justify-content:flex-end;width:100%">
+                                <img style="width:10% ;height:10%" src="https://www.pngitem.com/pimgs/m/423-4236284_png-images-success-icon-png-transparent-png-download.png" alt="">
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="middle-3">
+                        <div class="middle3-alt">
+                            <img src="https://cdn-icons-png.flaticon.com/512/168/168882.png"/>
+                            <div style="border: 2px solid black ;height: 50%;width:80%;margin: auto;margin-bottom: 2%;">
+                                <p>Name: CyBer2202 <br>
+                                University:Sıtkı Koçman</p>
+                                
+                            </div>
+                        </div>
+                        <div  class="middle3-alt">
+                            <!-- <p style="margin-top: 7%;color: rgb(5, 80, 105);font-size: small;">Bakiye:</p> -->
+                            <div style="border:2px solid black;width:70%;margin: auto;margin-top: 4%;height: 20%;">
+                                <p style="margin: auto;width: fit-content;margin-top: 4%;">14.000 $</p>
+                                
+                            </div>
+                            <img style="width:50% ;height:55%;margin: auto;" src="https://www.freeiconspng.com/uploads/-blue-wallet-icon-free-web-2-blue-wallet-icons-web-2-blue-icon-set-30.jpg" ></img>
+                            
+
+                        </div>
+                        <div style="border:none;justify-content: flex-start;" class="middle3-alt">
+                            <p style="width:fit-content ;margin:auto;color:red;font-weight: 900;font-size: small;margin-bottom: 3%;">Favories</p>
+                            <div style="height: 82%;border:2px solid black;border-radius:20px;display: flex;flex-direction: column;justify-content: space-around;">
+                                <div class="middle3-alt-child">
+                                <p style="color:rgb(169, 169, 17) ;">Gold</p>
+                                </div>
+                                <div class="middle3-alt-child"><p style="color:rgb(17, 184, 184) ;">Bitcoin</p></div>
+                                <div class="middle3-alt-child"><p style="color:rgb(69, 133, 5)">Dollar</p></div>
+                                <div class="middle3-alt-child"><p style="color: rgb(242, 55, 55);">Yuan</p></div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+                <footer>
+                    <div class="footer-main">
+                        <div class="footer-alt">
+                            <section style="display: flex;">
+                                <!-- <img src="https://wallpapercave.com/wp/wp9392122.jpg"></img> -->
+                                <p style="width:fit-content ;margin:auto;margin-top: 3%">COİN</p>
+                                
+                            
+                            </section>
+                            <div><a href="https://tr.investing.com/crypto/currencies">Live Coin Market</a></div>
+                        </div>
+                        <div class="footer-alt">
+                            <section style="display: flex;">
+                                <!-- <img src="https://wallpapercave.com/wp/wp9392122.jpg"></img> -->
+                                <p style="width:fit-content ;margin:auto;margin-top: 3%;">STOCK MARKET</p>
+                                
+                            
+                            </section>
+                            <div><a href="https://uzmanpara.milliyet.com.tr/canli-borsa/">Live Stock Market</a></div>
+                        </div>
+                        <div class="footer-alt">
+                            <section style="display: flex;">
+                                <!-- <img src="https://wallpapercave.com/wp/wp9392122.jpg"></img> -->
+                                <p style="width:fit-content ;margin:auto;margin-top: 3%">GOLD</p>
+                                
+                            
+                            </section>
+                            <div><a href="https://www.altinkaynak.com/Altin/Kur/Guncel">Live Gold Market</a></div>
+                        </div>
+                    </div>
+                    <div style="text-align:center ;">
+                        <p >@2023 CENG Investing Stock Market</p>
+                    </div>
+
+                </footer>
+
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
