@@ -209,3 +209,47 @@
   margin-top: 11px;
   margin-bottom: 15px;
 }
+/* Varsayılan görünümü kaldır */
+input[type="radio"] {
+  appearance: none; /* Varsayılan görünümü kaldır */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: 2px solid #ccc; /* Gri border */
+  border-radius: 50%; /* Yuvarlak border */
+  width: 20px; /* Boyut */
+  height: 20px; /* Boyut */
+  position: relative;
+  cursor: pointer;
+  background-color: white; /* Arka plan beyaz */
+  transition: background-color 0.2s, border-color 0.2s; /* Yumuşak geçiş */
+}
+
+/* Seçili durumda iç kısmı yeşil yap, dış kısmı sarı */
+input[type="radio"]:checked {
+  border-color: yellow; /* Dış border sarı */
+  background-color: yellow; /* Arka plan sarı */
+}
+
+/* Seçili durumda iç kısmı yeşil yapmak için */
+input[type="radio"]:checked::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: green; /* İç kısmı yeşil yap */
+  border-radius: 50%; /* Yuvarlak iç kısm */
+}
+
+/* Seçili olmayan durumda iç kısmı beyaz yapmak için */
+input[type="radio"]:not(:checked)::before {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 8px;
+  height: 8px;
+  background-color: white; /* İç kısmı beyaz yap */
+  border-radius: 50%; /* Yuvarlak iç kısm */
+}
