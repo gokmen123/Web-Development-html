@@ -3,6 +3,8 @@
 const cardItems = JSON.parse(localStorage.getItem("cardItems")) || [];
 //localStorage.clear()
 
+console.log("cardItems",cardItems)
+
 const calculateItemPrice = () => {
   let itemPrice = 0;
   const cardItems = JSON.parse(localStorage.getItem("cardItems") || "[]");
@@ -30,7 +32,7 @@ const calculateItemPrice = () => {
 
 function calculateShipping(price, id) {
   let localShipmentArray = JSON.parse(localStorage.getItem("localShipmentArray") || "[]");
-  console.log("price and id",price,id)
+  //console.log("price and id",price,id)
   //localStorage.removeItem("localShipmentArray")
   if (localShipmentArray.length > 0 && localShipmentArray!==null) {
     const isExist = localShipmentArray.find((item) => item.id == id);
@@ -69,14 +71,14 @@ function totalCalculateShipping() {
       if (item.price !== null && item.price !== undefined && !isNaN(item.price)) {
         totalShipping += item.price;
       } else {
-        console.log("Invalid price:", item.price);  // Log invalid price
+        //console.log("Invalid price:", item.price);  // Log invalid price
       }
     });
   } else {
     console.log("Array is empty");
   }
 
-  console.log("totalPrice", totalShipping);
+  //console.log("totalPrice", totalShipping);
   return totalShipping;
 }
 function deleteProduct(id,quantity){
@@ -104,13 +106,81 @@ function deleteProduct(id,quantity){
   updateDisplay()
 }
 
+let currentUpdateItemId = null;
+let currentUpdateItemOldQuantity = null;
+
+function updateProduct(element) {
+  const item = JSON.parse(element.getAttribute('data-item'));
+  //console.log("item", item);
+  //console.log("Gelen ID:", item.id);
+  currentUpdateItemId=item.id;
+  currentUpdateItemOldQuantity = parseInt(item.quantity); 
+  const popup = document.getElementById('updatePopup');
+  popup.style.display = 'flex';
+  popup.querySelector(".update-popup-header").innerHTML=`Update ${item.name}`
+  popup.querySelector(".image-update").src = item.image;
+  popup.querySelector(".product-name").innerHTML = `${item.name}`;
+  popup.querySelector(".product-price").innerHTML = `$${item.price}`;
+  const select = popup.querySelector("select");
+  select.innerHTML = "";
+  for (let i = 1; i < 12; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = i;
+    if (parseInt(item.quantity) === i) option.selected = true;
+    select.appendChild(option);
+  }
+}
+
+document.getElementById("save-update-button").addEventListener("click", () => {
+  if (currentUpdateItemId === null) return;
+
+  const selectedQuantity = parseInt(document.querySelector(".update-popup-quantity select").value);
+  if (selectedQuantity === currentUpdateItemOldQuantity) {
+    // Hiçbir değişiklik yapılmamış, popup'ı kapat sadece
+    document.getElementById('updatePopup').style.display = 'none';
+    currentUpdateItemId = null;
+    currentUpdateItemOldQuantity = null;
+    return;
+  }
+
+  const cardItems = JSON.parse(localStorage.getItem("cardItems")) || [];
+  const updatedItems = cardItems.map(item => {
+    if (item.id === currentUpdateItemId) {
+      return {
+        ...item,
+        quantity: selectedQuantity
+      };
+    }
+    return item;
+  });
+
+  // 🔁 storageNumber güncelle
+  let storageNumber = parseInt(localStorage.getItem("storageNumber") || "0");
+  let newStorageNumber = storageNumber - currentUpdateItemOldQuantity + selectedQuantity;
+  localStorage.setItem("storageNumber", JSON.stringify(newStorageNumber));
+
+  // 📦 cardItems güncelle
+  localStorage.setItem("cardItems", JSON.stringify(updatedItems));
+
+  // 🔄 UI güncelle
+  document.getElementById('updatePopup').style.display = 'none';
+  updateDisplay();
+
+  // 🧹 cleanup
+  currentUpdateItemId = null;
+  currentUpdateItemOldQuantity = null;
+});
+
+
+
 
 function updateDisplay() {
   const orderSummary = document.querySelector(".order-summary");
   orderSummary.innerHTML=""
   const cardItems = JSON.parse(localStorage.getItem("cardItems") || "[]");
   const shippingItems = JSON.parse(localStorage.getItem("localShipmentArray") || "[]");
-  let storageNumber=localStorage.getItem("storageNumber")
+  let storageNumber=localStorage.getItem("storageNumber") || "0"
   document.querySelector(".checkout-header-middle-section").innerHTML=`${storageNumber}`
   const itemPrice = calculateItemPrice();
   const shippingPrice = totalCalculateShipping();
@@ -122,7 +192,7 @@ function updateDisplay() {
       Order Summary
     </div>
     <div class="payment-summary-row">
-      <div>Items (${storageNumber}):</div>
+      <div>Items (${ storageNumber }):</div>
       <div class="payment-summary-money">$${parseFloat(itemPrice).toFixed(2)}</div>
     </div>
     <div class="payment-summary-row">
@@ -164,7 +234,8 @@ function updateDisplay() {
           <div class="product-price">$${item.price}</div>
           <div class="product-quantity">
             <span>Quantity: <span class="quantity-label">${item.quantity}</span></span>
-            <span  class="update-quantity-link link-primary">Update</span>
+            <span onclick="updateProduct(this)"  class="update-quantity-link link-primary"
+            data-item='${JSON.stringify(item)}'>Update</span>
             <span onclick="deleteProduct('${item.id}','${item.quantity}')" class="delete-quantity-link link-primary">Delete</span>
           </div>
         </div>
@@ -197,16 +268,44 @@ function updateDisplay() {
 
     
     orderSummary.appendChild(cartItem); 
+    //const shippingItems = JSON.parse(localStorage.getItem("localShipmentArray") || "[]");
+    const selectedShipping = shippingItems.find((ship) => ship.id === item.id);
+
+    // inputları oluşturduktan sonra:
     const radioButtons = cartItem.querySelectorAll('.delivery-option-input');
+
     radioButtons.forEach(radioButton => {
+      // Sayfa yüklenince doğru input'u işaretle
+      if (selectedShipping && parseFloat(radioButton.value) === selectedShipping.price) {
+        radioButton.checked = true;
+        radioButton.closest(".delivery-option").classList.add("selected"); // opsiyonel stil için
+      }
+      if (!selectedShipping) {
+        radioButton.checked = true;
+        radioButton.closest(".delivery-option").classList.add("selected");
+    
+        // Otomatik olarak hesaplama fonksiyonunu da çağır
+        calculateShipping(0, item.id);
+      }
+
       radioButton.addEventListener("change", (event) => {
-        console.log("Radio changed!"); // Bu kontrolü yaparak çalışıp çalışmadığını görebilirsiniz
-        console.log("Selected value:", event.target.value);  // Değeri kontrol et
+        //console.log("Radio changed!");
+        //console.log("Selected value:", event.target.value);
+
+        // Seçim değişince diğerlerinden selected class'ı kaldır
+        radioButtons.forEach(rb => {
+          rb.closest(".delivery-option").classList.remove("selected");
+        });
+
+        // Yeni seçileni vurgula
+        event.target.closest(".delivery-option").classList.add("selected");
+
         const price = parseFloat(event.target.value);
         const id = item.id;
-        calculateShipping(price, id); // Shipping fiyatını hesapla
+        calculateShipping(price, id);
       });
     });
+
     
 
  
