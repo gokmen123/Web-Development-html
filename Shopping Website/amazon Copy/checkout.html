@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout</title>
+
+    <!-- This code is needed for responsive design to work. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Load a font called Roboto from Google Fonts. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/pages/checkout/checkout-header.css">
+    <link rel="stylesheet" href="styles/pages/checkout/checkout.css">
+    <link rel="stylesheet" href="styles/pages/checkout/update.css">
+    <script defer src="scripts/check.js"></script>
+  </head>
+  <body>
+    <div class="checkout-header">
+      <div class="header-content">
+        <div class="checkout-header-left-section">
+          <a href="amazon.html">
+            <img class="amazon-logo" src="images/amazon-logo.png">
+            <img class="amazon-mobile-logo" src="images/amazon-mobile-logo.png">
+          </a>
+        </div>
+
+        <div class="checkout-header-middle-section">
+          Checkout (<a class="return-to-home-link" href="amazon.html">3 items</a>)
+        </div>
+
+        <div class="checkout-header-right-section">
+          <img src="images/icons/checkout-lock-icon.png">
+        </div>
+      </div>
+    </div>
+
+    <div class="main">
+      <div class="page-title">Review your order</div>
+
+      <div class="checkout-grid">
+        <div class="order-summary">
+          <!-- Order summary content can go here -->
+        </div>
+
+        
+      </div>
+    </div>
+
+    <!-- Update Popup -->
+    <div class="update-popup-overlay" id="updatePopup">
+      <div class="update-popup">
+        <div class="update-popup-header">Update Quantity</div>
+        <div class="update-popup-content">
+          <img class="image-update" src="images/products/adults-plain-cotton-tshirt-2-pack-teal.jpg" alt="Product Image"/>
+          <div class="update-popup-details">
+            <div class="product-name">Product Name</div>
+            <div class="product-price">$19.99</div>
+            <div class="update-popup-quantity">
+              Quantity:
+              <select>
+                {[...Array(12).keys()].map(i => `<option>${i + 1}</option>`).join("")}
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="update-popup-footer">
+          <button class="update-popup-close" onclick="document.getElementById('updatePopup').style.display = 'none';">Close</button>
+          <button id="save-update-button" class="update-popup-save">Save</button>
+        </div>
+      </div>
+    </div>
+    <div class="product-approve-alert">
+       <div class="product-approve-main">
+         <div class="product-approve-header">
+            <h1>Do you want to continue?</h1>
+         </div>
+         <div class="product-approve-body">
+          <button onclick="document.querySelector('.product-approve-alert').style.display='none'">No</button>
+          <button onclick="placeOrder()">Yes</button>
+          
+            
+         </div>
+       </div>
+    </div>
+    
+
+  </body>
+</html>
