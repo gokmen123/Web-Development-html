@@ -1,0 +1,43 @@
+🛒 Amazon-style Shopping Website (Frontend Project)
+
+This project is a frontend-focused shopping website inspired by Amazon.
+The UI structure was provided, and I implemented all search, cart, order, and tracking logic using vanilla JavaScript.
+
+🚀 Features
+
+Dynamic product listing rendered with JavaScript
+
+Keyword-based product search (name + keywords)
+
+Cart management using localStorage
+
+Add, update, and delete products from cart
+
+Quantity-based price calculations
+
+Shipping option selection with dynamic delivery dates
+
+Order creation and order history system
+
+Order grouping by date with unique order IDs
+
+Order tracking page with:
+
+Time-based progress calculation
+
+Dynamic status updates (Preparing / Shipped / Delivered)
+
+Persistent state across pages without any backend
+
+🛠️ Tech Stack
+
+HTML
+
+CSS
+
+Vanilla JavaScript
+
+localStorage (for state management)
+
+📌 Note:
+This project does not use any backend or external libraries. All logic, calculations, and state handling are implemented on the frontend.
